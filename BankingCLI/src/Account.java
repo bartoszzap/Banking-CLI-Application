@@ -9,18 +9,22 @@ public class Account {
         balance = 0.0;
     }
 
-    public void deposit(int bal) {
+    public boolean deposit(double bal) {
         if (bal > 0) {
             balance += bal;
+            return true;
         }
+        return false;
     }
 
-    public void withdraw(int bal) {
+    public boolean withdraw(double bal) {
         if (bal > 0) {
             if (bal <= balance) {
                 balance -= bal;
+                return true;
             }
         }
+        return false;
     }
 
     public String getAccountNumber() {
