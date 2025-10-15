@@ -11,8 +11,11 @@ public class BankApp {
         do {
             showMenu();
             choice = getInteger("Choose an option: ");
+
+
             if (scanner.hasNextLine()) {
                 scanner.nextLine();
+                handleChoice(choice);
             }
 
         } while (choice != 5);
@@ -72,15 +75,34 @@ public class BankApp {
     private static void createAccount() {
         System.out.println("Enter account holder name: ");
         String name = scanner.nextLine();
+
         bank.createAccount(name);
     }
 
     private static void depositFunds() {
-        System.out.println("Enter the amount of funds you'd like to deposit: £");
+        System.out.println("Enter the account number you'd like to deposit into: ");
+        String accNum = scanner.nextLine();
+        double amount = getDouble("Enter the amount of funds you'd like to deposit: £");
 
+        bank.performDeposit(accNum, amount);
+    }
+
+    private static void withdrawFunds() {
+        System.out.println("Enter the account number you'd like to withdraw from: ");
         String accNum = scanner.nextLine();
 
-        double amount = getDouble("Enter the amount of funds you'd like to deposit: £");
-        bank.performDeposit(accNum, amount);
+        double amount = getDouble("Enter the amount of funds you'd like to withdraw: £");
+
+        bank.performWithdrawal(accNum, amount);
+    }
+
+    private static void checkBalance() {
+        System.out.println("Enter the account number you'd like to check the balance of: ");
+        String accNum = scanner.nextLine();
+
+        if (bank.getAccount(accNum) != null) {
+            Account account = bank.getAccount(accNum);
+            account.getDetails();
+        }
     }
 }

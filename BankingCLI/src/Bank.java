@@ -10,6 +10,8 @@ public class Bank {
         Account newAccount = new Account(uniqueNum, name);
         this.accounts.put(uniqueNum, newAccount);
 
+        System.out.println("Successfully created a new account with name: " + name + ". Your account number is: " + uniqueNum + ".");
+
         return uniqueNum;
     }
 
