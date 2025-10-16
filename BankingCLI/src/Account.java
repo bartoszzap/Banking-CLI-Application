@@ -35,7 +35,7 @@ public class Account {
         return balance;
     }
 
-    public String getDetails() {
-        return "The account: '" + getAccountNumber() + "', has a balance of " + getBalance() + ".";
+    public void getDetails() {
+        System.out.println("The account: '" + getAccountNumber() + "', has a balance of £" + getBalance() + ".");
     }
 }
